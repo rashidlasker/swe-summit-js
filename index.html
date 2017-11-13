@@ -1,69 +1,85 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>AirBnB Data Analysis</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>AirBnB Data Analysis</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="apple-touch-icon" href="icon.png">
-        <!-- Place favicon.ico in the root directory -->
-        
-        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        
-        <!-- Mapbox -->
-        <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
-    </head>
-    <body>
-        <!--[if lte IE 9]>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+    <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <div class="title-container">
-            <h1 class="title">SF Airbnb Data Analysis</h1>
+    <div class="title-container">
+        <h1 class="title">SF Airbnb Data Analysis</h1>
+        <p class="title-text">Hey there! I'm <a href="https://github.com/rashidlasker" target="_blank">@rashidlasker</a> and this is my submission for the Capital One Software Engineering Summit. Enjoy!</p>
+        <div class="arrow bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                <g>
+                   <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+                </g>
+            </svg>
         </div>
-        
-        <div class="graph-container">
-            <h2 class="section-title">Data Visualizations</h2>
-            <div id="loading hidden" class=""></div>
-            <div class="graph-buttons">
-                <button onclick="showMap()">Map of Reviews</button>
-                <button onclick="getVariance()">Price Variance by Neighbourhood</button>
-                <button onclick="getAvailability()">Availability by Date</button>
-            </div>
-            <br>
-            
-            <canvas id="myChart1"></canvas>
-            <canvas id="myChart2"></canvas>
-            <div id="map-container" class="map-container">
-                <div id='map' style='width: 100%; height: 80vh;'></div>
-            </div>
+    </div>
+
+    <div class="graph-container">
+        <h2 class="section-title">Data Visualizations</h2>
+        <div id="loading hidden" class=""></div>
+        <div class="graph-buttons">
+            <button onclick="showMap()">Map of Reviews</button>
+            <button onclick="getVariance()">Price Variance by Neighbourhood</button>
+            <button onclick="getAvailability()">Availability by Date</button>
         </div>
-        
-        <div class="price-container">
-            <h2 class="section-title">Weekly Income Estimation</h2>
-            <input id="lat" type="number">
-            <input id="long" type="number">
-            <div class="optimized price"></div>
+        <br>
+
+        <canvas id="myChart1"></canvas>
+        <canvas id="myChart2"></canvas>
+        <div id="map-container" class="map-container">
+            <div id='map' style='width: 100%; height: 80vh;'></div>
         </div>
-        
-        
-        
-        <!-- JS -->
-        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-        <script src="https://unpkg.com/simple-statistics@5.1.0/dist/simple-statistics.min.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+    </div>
+
+    <div class="price-container">
+        <h2 class="section-title">Optimization Problems</h2>
+        <p class="input-label">Latitude:</p><input id="lat" type="number" step="0.000001">
+        <p id="lat-error"></p>
+        <p class="input-label">Longitude:</p><input id="long" type="number" step="0.000001">
+        <p id="long-error"></p>
+        <br>
+        <button onclick="getEstimate()">Get Weekly Income Estimate</button>
+        <button onclick="getRevenue()">Get Bookings Optimization</button>
+        <br>
+        <div id="message"></div>
+    </div>
+
+
+
+    <!-- JS -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')
+    </script>
+    <script src="js/plugins.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://unpkg.com/simple-statistics@5.1.0/dist/simple-statistics.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>

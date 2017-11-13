@@ -207,6 +207,80 @@ map.on('load', function () {
     });
 });
 
+///////////////////////////////////////Optimizations////////////////////////////////////////
+
+function getEstimate(){
+    document.getElementById("lat-error").innerHTML = "";
+    document.getElementById("long-error").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
+    if(document.getElementById("lat").value > 37.9 || document.getElementById("lat").value < 37.6){
+        document.getElementById("lat-error").innerHTML = "Error: Latitude out of range";
+    }
+    if(document.getElementById("long").value < -122.6 || document.getElementById("long").value > -122.3 ){
+        document.getElementById("long-error").innerHTML = "Error: Longitude out of range";
+    }
+    if(document.getElementById("lat").value == ""){
+        document.getElementById("lat-error").innerHTML = "Error: No latitude given.";
+        
+    }
+    if(document.getElementById("long").value == ""){
+        document.getElementById("long-error").innerHTML = "Error: No longitude given.";
+    }
+    if(document.getElementById("lat-error").innerHTML == "" && document.getElementById("long-error").innerHTML == ""){
+        var nearby =  listings.filter(function(d) { return Math.abs(d.longitude - document.getElementById("long").value) < 0.001; }).filter(function(d) { return Math.abs(d.latitude - document.getElementById("lat").value) < 0.001; });
+        var l = nearby.length;
+        var sum = 0
+        for (var i = 0; i < l; i++) { // loop through l items
+            sum += nearby[i].weekly_price;
+        }
+        var avg = sum/l;
+        avg = avg.toFixed(2);
+        if(avg !== avg){
+            document.getElementById("message").innerHTML = "There's no one close enough to compare."; 
+        } else{
+            document.getElementById("message").innerHTML = "Your weekly income estimate is $" + avg + ".";
+        }
+    }
+}
+
+function getRevenue(){
+    document.getElementById("lat-error").innerHTML = "";
+    document.getElementById("long-error").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
+    if(document.getElementById("lat").value > 37.9 || document.getElementById("lat").value < 37.6){
+        document.getElementById("lat-error").innerHTML = "Error: Latitude out of range";
+    }
+    if(document.getElementById("long").value < -122.6 || document.getElementById("long").value > -122.3 ){
+        document.getElementById("long-error").innerHTML = "Error: Longitude out of range";
+    }
+    if(document.getElementById("lat").value == ""){
+        document.getElementById("lat-error").innerHTML = "Error: No latitude given.";
+        
+    }
+    if(document.getElementById("long").value == ""){
+        document.getElementById("long-error").innerHTML = "Error: No longitude given.";
+    }
+    if(document.getElementById("lat-error").innerHTML == "" && document.getElementById("long-error").innerHTML == ""){
+        var nearby =  listings.filter(function(d) { return Math.abs(d.longitude - document.getElementById("long").value) < 0.005; }).filter(function(d) { return Math.abs(d.latitude - document.getElementById("lat").value) < 0.005; });
+        var l = nearby.length;
+        var sum = 0;
+        var sumReviews = 0;
+        for (var i = 0; i < l; i++) { // loop through l items
+            sum += nearby[i].price * nearby[i].reviews_per_month;
+            sumReviews += nearby[i].reviews_per_month;
+        }
+        var avg = sum/l;
+        var avgR = sumReviews/l;
+        avg = avg/avgR;
+        avg = avg.toFixed(2);
+        if(avg !== avg){
+            document.getElementById("message").innerHTML = "There's no one close enough to compare."; 
+        } else{
+            document.getElementById("message").innerHTML = "Your optimized nightly rate is $" + avg + ".";
+        }
+    }
+}
+
 ///////////////////////////////////////Utility////////////////////////////////////////
 truncateDecimals = function (number, digits) {
     var multiplier = Math.pow(10, digits),
