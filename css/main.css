@@ -14,6 +14,7 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+    font-family: 'Open Sans';
 }
 
 /*
@@ -97,20 +98,60 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.title, .section-title{
+    text-align: center;
+}
+
+.graph-container, .price-container{
+    padding: 40px 100px;
+}
+
+.graph-buttons{
+    text-align: center;
+}
+
+button{
+	border: 1px #CCC solid; 
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: #FDFDFD;
+	color: black;
+	margin: 1px 5px 1px 0px;
+	padding: 7px 20px;
+	text-align: center;
+	vertical-align: middle;
+	transition: 0.2s;
+}
+
+button:focus{
+    outline: none;
+    border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+    border: 1px #222 solid; 
+}
+
+button:hover, button:active{
+	background: #999999;
+	color: #FDFDFD;
+	transition: 0.2s;
+}
+
+#myChart1, #myChart2{
+    display: none;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+@media only screen and (max-width: 800px) {
+    .graph-container{
+        padding: 0;
+    }
+    .graph-buttons{
+        max-width:200px;
+        margin:0 auto;
+    }
+}
 
 
 /* ==========================================================================
