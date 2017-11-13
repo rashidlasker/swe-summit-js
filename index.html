@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>AirBnB Data Analysis</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,11 +20,26 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <div class="title-container">
+            <h1 class="title">SF Airbnb Data Analysis</h1>
+        </div>
+        
+        <div class="graph-container">
+            <div id="loading"></div>
+            
+            <button onclick="doSomething()">Button 1</button>
+            <button onclick="doSomething()">Button 2</button>
+            <button onclick="doSomething()">Button 3</button>
+            <div id="ret"></div>
+        </div>
+        
+        <!-- JS -->
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
