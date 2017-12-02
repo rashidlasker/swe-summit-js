@@ -40,7 +40,7 @@ d3.csv("../data/listings-pruned.csv", function(data) {
     
     //return
     listings = data;
-    document.getElementById("loading").innerHTML += "loaded listings!";
+    //document.getElementById("loading").innerHTML += "loaded listings!";
 });
 
 d3.csv("../data/neighbourhoods.csv", function(data) {
@@ -49,16 +49,16 @@ d3.csv("../data/neighbourhoods.csv", function(data) {
     for (var i = 0; i < l; i++) { // loop through l items
         neighbourhoods.push(data[i].neighbourhood);
     }
-    document.getElementById("loading").innerHTML += "loaded neighborhoods!";
+    //document.getElementById("loading").innerHTML += "loaded neighborhoods!";
     console.log(neighbourhoods[0]);
 });
 
-d3.csv("../data/calendar_available_only.csv", function(data) {
+d3.csv("../data/calendar_available_only_dates.csv", function(data) {
     //preprocess array
     //return
     calendar = data;
     available = buildMap(_.countBy(calendar, 'date'));
-    document.getElementById("loading").innerHTML += "loaded calendar!";
+    //document.getElementById("loading").innerHTML += "loaded calendar!";
 });
 
 
