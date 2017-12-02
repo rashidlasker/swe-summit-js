@@ -53,7 +53,7 @@ d3.csv("../data/neighbourhoods.csv", function(data) {
     console.log(neighbourhoods[0]);
 });
 
-d3.csv("../data/calendar_available_only_dates.csv", function(data) {
+d3.csv("../data/calendar_available_only.csv", function(data) {
     //preprocess array
     //return
     calendar = data;
