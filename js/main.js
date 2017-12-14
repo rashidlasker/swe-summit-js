@@ -5,7 +5,7 @@ var neighbourhoods;
 var calendar;
 var available;
 
-d3.csv("./data/listings-pruned.csv", function(data) {
+d3.csv("data/listings-pruned.csv", function(data) {
     //preprocess array
     data.forEach(function(d) {
         //type converstions
@@ -43,7 +43,7 @@ d3.csv("./data/listings-pruned.csv", function(data) {
     //document.getElementById("loading").innerHTML += "loaded listings!";
 });
 
-d3.csv("./data/neighbourhoods.csv", function(data) {
+d3.csv("data/neighbourhoods.csv", function(data) {
     neighbourhoods = [];
     var l = data.length;
     for (var i = 0; i < l; i++) { // loop through l items
@@ -53,7 +53,7 @@ d3.csv("./data/neighbourhoods.csv", function(data) {
     console.log(neighbourhoods[0]);
 });
 
-d3.csv("./data/calendar_available_only_dates.csv", function(data) {
+d3.csv("data/calendar_available_only_dates.csv", function(data) {
     //preprocess array
     //return
     calendar = data;
